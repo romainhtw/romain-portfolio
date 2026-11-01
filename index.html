@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Brief, Already Running</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Layout: one column, screenshots as large as the column, a caption under each */
+  --bg:#FFFFFF; --ink:#16171B; --muted:#62656D; --line:#ECECEF;
+  --pink:#FFC6D3; --green:#7ED996; --green-ink:#14532D;
+  --sans:'Inter','Helvetica Neue',Arial,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img,video{max-width:100%;display:block}
+a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+h1,h2{font-weight:800;letter-spacing:-0.035em;line-height:1.04;text-wrap:balance}
+h1{font-size:clamp(44px,7.5vw,88px)}
+h2{font-size:clamp(32px,4.8vw,54px)}
+.hl{background:var(--pink);color:#16171B;padding:0 .12em;border-radius:.12em}
+.eyebrow{font-family:var(--mono);font-size:13px;color:var(--muted)}
+
+.bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:22px 0;font-size:14px;color:var(--muted)}
+.logo{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--ink);font-size:16px}
+.logo i{width:24px;height:24px;border-radius:7px;background:var(--pink);display:grid;place-items:center;font-style:normal;font-size:13px;font-weight:800;color:#16171B}
+
+.hero{padding:64px 0 24px;display:flex;flex-direction:column;gap:22px}
+.lead{font-size:clamp(18px,2vw,21px);color:var(--muted);max-width:620px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:14px;font-weight:600;padding:7px 14px;border-radius:999px;background:var(--pink);color:#16171B}
+.res{font-size:14px;font-weight:600;padding:7px 14px;border-radius:999px;background:var(--green);color:var(--green-ink)}
+
+section{padding:88px 0 0;display:flex;flex-direction:column;gap:22px}
+.case-head{display:flex;flex-direction:column;gap:14px;max-width:820px}
+.case-head p{font-size:18px;color:var(--muted)}
+.foryou{font-size:17px;max-width:820px;border-left:4px solid var(--pink);padding:2px 0 2px 16px}
+.foryou b{font-weight:700}
+
+.shots{display:flex;flex-direction:column;gap:44px;margin-top:18px}
+figure{display:flex;flex-direction:column;gap:12px}
+.shot{display:block;width:100%;padding:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#F6F6F8;cursor:zoom-in;box-shadow:0 24px 48px -32px rgba(22,23,27,.35)}
+.shot img{width:100%;height:auto}
+.narrow{max-width:640px;width:100%;margin:0 auto}
+figcaption{display:grid;grid-template-columns:36px 1fr;gap:2px 10px;font-size:16px;color:var(--muted)}
+figcaption .k{font-family:var(--mono);font-size:13px;color:#16171B;background:var(--pink);border-radius:6px;text-align:center;height:24px;line-height:24px}
+figcaption b{color:var(--ink);font-weight:700}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.phones{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.phones .shot{border-radius:22px}
+.video{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#000;width:100%}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;background:var(--ink);color:var(--bg)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+
+.badge{font-size:14px;font-weight:700;padding:7px 14px;border-radius:999px;background:#16171B;color:#fff}
+.safe{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 32px;margin-top:8px}
+.safe b{display:block;font-size:18px;margin-bottom:6px;padding-top:12px;border-top:3px solid var(--pink)}
+.safe p{color:var(--muted);font-size:16px}
+@media (max-width:760px){.safe{grid-template-columns:1fr}}
+.map{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:8px}
+.map a{background:var(--bg);padding:18px 20px;display:grid;grid-template-columns:30px 1fr;gap:2px 10px;text-decoration:none;color:var(--ink)}
+.map a:hover{background:#FFF5F7}
+.map .k{grid-row:span 3;font-family:var(--mono);font-size:13px;background:var(--pink);color:#16171B;border-radius:6px;height:24px;line-height:24px;text-align:center}
+.map b{font-size:16px}
+.map span:not(.k){font-size:14px;color:var(--muted)}
+.map i{font-style:normal;font-size:13px;font-weight:600;margin-top:4px}
+@media (max-width:760px){.map{grid-template-columns:1fr}}
+footer{margin-top:110px;padding:36px 0 56px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;font-size:15px;color:var(--muted)}
+footer b{color:var(--ink)}
+footer a{color:var(--ink)}
+
+dialog{border:0;padding:0;background:transparent;max-width:96vw;max-height:94vh;margin:auto}
+dialog::backdrop{background:rgba(14,14,17,.88)}
+dialog img{max-width:96vw;max-height:84vh;width:auto;height:auto;border-radius:12px;background:#fff}
+dialog p{color:#F2F2F4;font-size:15px;margin-top:12px;text-align:center}
+dialog button{position:fixed;top:16px;right:16px;background:var(--pink);color:#16171B;border:0;border-radius:999px;padding:8px 16px;font:600 14px var(--sans);cursor:pointer}
+
+@media (max-width:760px){
+  .pair{grid-template-columns:1fr}
+  .phones{grid-template-columns:1fr 1fr}
+}
+@media (max-width:480px){
+  .wrap{padding:0 16px}
+  section{padding-top:64px}
+  .phones{gap:14px}
+  .bar span:last-child{display:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="bar">
+  <span class="logo">Romain Bouguedoura</span>
+  <span>Perth, WA · available full-time</span>
+</div>
+
+<header class="hero">
+  <h1>Your brief, <span class="hl">already running.</span></h1>
+  <p class="lead">For the AI Orchestrator role. Four tools I built and run for WA businesses facing the problems in your brief. Real screens, client names and prices hidden.</p>
+  <div class="map">
+    <a href="#quotes"><span class="k">1</span><b>Proposal in under 24 h</b><span>from Podio history, without the owner</span><i>Quotes ↓</i></a>
+    <a href="#data"><span class="k">2</span><b>ESdat data to draft report</b><span>CSV and lab PDF in, limits checked</span><i>Reports ↓</i></a>
+    <a href="#sites"><span class="k">3</span><b>Offline field capture</b><span>scientists on remote sites, sync later</span><i>Field ↓</i></a>
+    <a href="#safe"><span class="k">4</span><b>Safe compliance wording</b><span>AI drafts, the scientist signs</span><i>Safety ↓</i></a>
+    <a href="#me"><span class="k">5</span><b>Owner's sales approach</b><span>calls recorded with consent, turned into a playbook</span><i>How ↓</i></a>
+    <a href="#ncr"><span class="k">6</span><b>Reuse across the group</b><span>geotech and paper businesses</span><i>Scale ↓</i></a>
+  </div>
+</header>
+
+<!-- THE GATE -->
+<section id="quotes">
+  <div class="case-head">
+    <p class="eyebrow">01 · Quotes · mining hydraulics workshop, ~100 staff</p>
+    <h2>A 3-day quote, now done in hours.</h2>
+    <p>A technical, multi-step, compliant workflow built on hundreds of specs, tested with the team and proven live. The video follows one cylinder through the workshop. It is technical on purpose: watch the pattern, field data in, priced quote out.</p>
+  </div>
+  <div class="chips"><span class="res">3 days → hours</span><span class="res">~48 users</span><span class="res">Works offline</span></div>
+  <p class="foryou"><b>For you:</b> past Podio proposals become the price book. A new enquiry gets a first proposal in under 24 hours, without waiting for the owner. Swap cylinder specs for exposure limits and the same flow drafts the report; a scientist signs.</p>
+
+  <figure><video class="video" src="gate.mp4" poster="img/gate-poster.jpg" controls playsinline preload="metadata"></video><figcaption><span class="k">▶</span><span><b>Press play.</b> 2½ minutes, subtitled, no sound needed.</span></figcaption></figure>
+</section>
+
+<!-- NCR -->
+<section id="ncr">
+  <div class="case-head">
+    <p class="eyebrow">02 · Quality · same workshop group</p>
+    <h2>Non-conformance reports, now in two departments.</h2>
+    <p>Defects and rework used to be verbal or on paper. Now they are raised on the floor with photos and closed by a validator. It became a daily tool, and the client asked me to roll it out to a second department.</p>
+  </div>
+  <div class="chips"><span class="res">Used daily</span><span class="res">2 departments</span><span class="res">Audit-ready history</span></div>
+  <p class="foryou"><b>For you:</b> sampling deviations, site incidents and corrective actions, raised in the field and closed by a reviewer. Built once, then copied to the geotech and paper businesses with their own setup.</p>
+
+  <div class="shots">
+    <div class="pair">
+      <figure><button class="shot" data-cap="Department one."><img src="img/ncr-eps.jpg" alt="Raise an NCR, first department selected" width="1600" height="850" loading="lazy"></button><figcaption><span class="k">1</span><span><b>Department one.</b> Pick the job in a tap.</span></figcaption></figure>
+      <figure><button class="shot" data-cap="Department two, added at the client's request."><img src="img/ncr-hh.jpg" alt="Raise an NCR, second department selected" width="1600" height="865" loading="lazy"></button><figcaption><span class="k">2</span><span><b>Department two.</b> Added on request, its own setup.</span></figcaption></figure>
+    </div>
+    <figure><button class="shot" data-cap="Photos of the defect and what was done straight away."><img src="img/ncr-action.jpg" alt="Photos and immediate action step" width="1600" height="866" loading="lazy"></button><figcaption><span class="k">3</span><span><b>Proof and action on the spot.</b> Work stopped, part quarantined, customer notified.</span></figcaption></figure>
+  </div>
+</section>
+
+<!-- MINI H3E -->
+<section id="sites">
+  <div class="case-head">
+    <p class="eyebrow">03 · Field teams · electrical contractor, 8 sites</p>
+    <h2>Site orders, without a phone call.</h2>
+    <p>Leading hands order materials from their phone. The office approves and orders. Everyone sees where it is, and items are checked in on site.</p>
+  </div>
+  <div class="chips"><span class="res">~15 h a week back for the owner</span><span class="res">8 sites, one screen</span></div>
+  <p class="foryou"><b>For you:</b> scientists sampling on remote sites with no signal. Capture on a phone or tablet, sync later, a timestamped chain of custody, and one view of every project.</p>
+
+  <div class="shots">
+    <div class="phones">
+      <figure><button class="shot" data-cap="Pick-up today."><img src="img/mini-m-pickup.jpg" alt="Phone pick-up today banner" width="455" height="891" loading="lazy"></button><figcaption><span class="k">1</span><span><b>Site home.</b> What needs doing today.</span></figcaption></figure>
+      <figure><button class="shot" data-cap="Order from the catalogue."><img src="img/mini-m-order.jpg" alt="Phone catalogue" width="457" height="883" loading="lazy"></button><figcaption><span class="k">2</span><span><b>Order</b> from the catalogue.</span></figcaption></figure>
+      <figure><button class="shot" data-cap="Track it live."><img src="img/mini-m-status.jpg" alt="Phone order status and history" width="452" height="890" loading="lazy"></button><figcaption><span class="k">3</span><span><b>Track</b> it live.</span></figcaption></figure>
+      <figure><button class="shot" data-cap="All in. The office knows."><img src="img/mini-m-done.jpg" alt="Delivered confirmation" width="451" height="961" loading="lazy"></button><figcaption><span class="k">4</span><span><b>Check in.</b> The office knows.</span></figcaption></figure>
+    </div>
+    <figure><button class="shot" data-cap="Office home: what needs review today, across every site."><img src="img/mini-admin-home.jpg" alt="Office home showing one order to review" width="1260" height="710" loading="lazy"></button><figcaption><span class="k">5</span><span><b>Office home.</b> One glance: what needs review, what to chase.</span></figcaption></figure>
+    <figure><button class="shot" data-cap="Approve, order, notify. Every step timestamped."><img src="img/mini-approve.jpg" alt="Office order page with approve and timeline" width="1260" height="850" loading="lazy"></button><figcaption><span class="k">6</span><span><b>Office side.</b> Approve, order, notify. Every step timestamped.</span></figcaption></figure>
+    <figure><button class="shot" data-cap="Every job running, on one screen."><img src="img/mini-sites.jpg" alt="Eight running jobs" width="1260" height="740" loading="lazy"></button><figcaption><span class="k">7</span><span><b>The owner's control tower.</b> Every site, on one screen.</span></figcaption></figure>
+  </div>
+</section>
+
+<!-- PITSTOP -->
+<section id="data">
+  <div class="case-head">
+    <p class="eyebrow">04 · Data and reports · bike shop, North Perth</p>
+    <h2>~25 hours a week of retyping, gone.</h2>
+    <p>Supplier invoices are read automatically and pushed to stock. Reports come out in a click: sales, margin, payments, BAS, Excel export. Built for one shop, now a public Shopify app.</p>
+  </div>
+  <div class="chips"><span class="res">~25 h a week saved</span><span class="badge">✓ Approved by Shopify · listed on the App Store</span></div>
+  <p class="foryou"><b>For you:</b> ESdat CSVs and lab PDFs in, results checked against the limits, a draft report out in minutes for the scientist to review. Any other report from the same data.</p>
+
+  <div class="shots">
+    <figure><button class="shot" data-cap="Drop the supplier PDF. The app reads every line for you to check."><img src="img/pit-drop.jpg" alt="Drop a PDF invoice here" width="1400" height="600" loading="lazy"></button><figcaption><span class="k">1</span><span><b>The key: drop the PDF.</b> Every line read for you. You just check.</span></figcaption></figure>
+    <figure><button class="shot" data-cap="Invoices read and pushed to stock. Unclear ones wait for a person."><img src="img/pit-pos.jpg" alt="Purchase orders with statuses" width="1600" height="857" loading="lazy"></button><figcaption><span class="k">2</span><span><b>Invoices in, stock updated.</b> Anything unclear waits for a person.</span></figcaption></figure>
+    <figure><button class="shot" data-cap="Sales, payments and BAS reports, one click to Excel."><img src="img/pit-sales.jpg" alt="Sales report with Excel export" width="1600" height="848" loading="lazy"></button><figcaption><span class="k">3</span><span><b>Any report, one click.</b> Sales, payments, BAS, straight to Excel.</span></figcaption></figure>
+  </div>
+  <div class="btns">
+    <a class="btn" href="https://www.youtube.com/watch?v=ncB-Flik0gw&amp;t=20s" target="_blank" rel="noopener">▶ Click to watch the PitStop video</a>
+    <a class="btn ghost" href="https://apps.shopify.com/pitstop" target="_blank" rel="noopener">Shopify App Store</a>
+  </div>
+</section>
+
+<section id="safe">
+  <div class="case-head">
+    <p class="eyebrow">05 · Why it's safe</p>
+    <h2>Your data stays yours.</h2>
+  </div>
+  <div class="safe">
+    <div><b>Only the right people get in.</b><p>Everyone has their own login, and each person sees only what their job needs.</p></div>
+    <div><b>Nothing goes out without a person.</b><p>The app prepares reports, quotes and emails. A person checks and sends.</p></div>
+    <div><b>Every change is recorded.</b><p>Who did what, and when, on every job. Nothing quietly disappears.</p></div>
+    <div><b>Tested before it reaches the team.</b><p>New features are tried in a practice copy first, never on live work.</p></div>
+    <div><b>Backed up and stored in Australia.</b><p>Data is kept in secure, well-known cloud services, in your company's name.</p></div>
+    <div><b>Numbers come from your data.</b><p>AI helps with wording and sorting. Prices and results always come from your own records.</p></div>
+  </div>
+</section>
+
+<section id="me">
+  <div class="case-head">
+    <p class="eyebrow">06 · Why me, full-time</p>
+    <h2>Field first, then the tool.</h2>
+  </div>
+  <div class="safe">
+    <div><b>I come from the field.</b><p>Carpenter and leading hand. I build for people in boots, so the team actually uses it.</p></div>
+    <div><b>Business before tech.</b><p>Business school and years in sales. I start from hours and dollars, and measure before and after.</p></div>
+    <div><b>I build and I ship.</b><p>Four tools live with real users. I listen to the owner, map the job, build, train the team, and keep it running.</p></div>
+  </div>
+  <p class="foryou"><b>The owner's sales approach:</b> with everyone's consent, calls are recorded, transcribed and turned into a step-by-step playbook the team can learn from. I already run my own meetings this way every day.</p>
+</section>
+
+<footer>
+  <span><b>Romain Bouguedoura</b> · Perth, WA · available full-time</span>
+  <span>romain.htw@gmail.com</span>
+</footer>
+
+</div>
+
+<dialog id="lb" aria-label="Enlarged screenshot">
+  <button type="button" id="lbx">Close</button>
+  <img id="lbi" alt="">
+  <p id="lbc"></p>
+</dialog>
+<script>
+(function(){
+  var d=document.getElementById('lb'),i=document.getElementById('lbi'),c=document.getElementById('lbc');
+  document.querySelectorAll('.shot').forEach(function(b){
+    b.addEventListener('click',function(){var im=b.querySelector('img');i.src=im.src;i.alt=im.alt;c.textContent=b.getAttribute('data-cap')||'';if(d.showModal)d.showModal();});
+  });
+  document.getElementById('lbx').addEventListener('click',function(){d.close();});
+  d.addEventListener('click',function(e){if(e.target===d)d.close();});
+})();
+</script>
+</body>
+</html>
